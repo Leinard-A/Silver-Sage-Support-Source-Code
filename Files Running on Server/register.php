@@ -102,7 +102,7 @@ else
 //Frees memory on the server and redirects user to the login page. 
 mysqli_free_result($result);
 mysqli_close($mysqli);
-header("Location: login.php");
+header("Location: login.html");
 
 
 
