@@ -49,14 +49,6 @@ if (mysqli_num_fields($result) > 0) {
     array_push($errors,"Password already exists!");
 }
 
-if (count($errors)>0) {
-    foreach ($errors as $error) {
-        echo "<div class='alert alert-danger'>$error</div>";
-        header("Location: register.html");
-
-    }
-}
-
 //Checks if the email is already in use
 $sqlStmt = "SELECT * FROM users
             WHERE email = '{$_GET['Email']}'";
@@ -66,7 +58,30 @@ $result =  mysqli_query($mysqli,$sqlStmt);
 if (mysqli_num_fields($result) > 0 ){
     array_push($errors, "Emails already in use");
 }
+//Checks if the username is already in use
+$sqlStmt = "SELECT * FROM users
+            WHERE username = '{$_POST['username']}'";
 
+$result = mysqli_query($mysqli,$sqlStmt);
+if (mysqli_num_fields($result) > 0) {
+    array_push($errors,"Password already exists!");
+}
+//Any errors and it returns the user to the register page.
+if (count($errors)>0) {
+    foreach ($errors as $error) {
+        echo "<div class='alert alert-danger'>$error</div>";
+        header("Location: register.html");
+
+    }
+}
+
+if (count($errors)>0) {
+    foreach ($errors as $error) {
+        echo "<div class='alert alert-danger'>$error</div>";
+        header("Location: register.html");
+
+    }
+}
 
 //Inputs data into the database. 
 if (!empty($_POST["insuranceProvider"]) && !empty($_POST["insuranceNumber"])){ 
