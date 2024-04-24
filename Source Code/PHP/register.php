@@ -57,6 +57,7 @@ $result = mysqli_query($mysqli,$sqlStmt);
 if (mysqli_num_fields($result) > 0) {
     array_push($errors,"Password already exists!");
     $passwordExists = true;
+    mysqli_free_result($result);
 }
 //Checks if the email is already in use
 $sqlStmt = "SELECT * FROM users
@@ -67,6 +68,7 @@ $result =  mysqli_query($mysqli,$sqlStmt);
 if (mysqli_num_fields($result) > 0 ){
     array_push($errors, "Emails already in use");
     $emailExists = true;
+    mysqli_free_result($result);
 }
 //Checks if the username is already in use
 $sqlStmt = "SELECT * FROM users
@@ -77,6 +79,7 @@ $result = mysqli_query($mysqli,$sqlStmt);
 if (mysqli_num_fields($result) > 0 ){
     array_push($errors, "Username already in use");
     $usernameExists = true;
+    mysqli_free_result($result);
 }
 
 
@@ -84,7 +87,6 @@ if (mysqli_num_fields($result) > 0 ){
 //Inputs data into the database. 
 if (count($errors)>0){
     $registrationFail = true;
-    mysqli_free_result($result);
     mysqli_close($mysqli);
 }
 else if (!empty($_POST["insuranceProvider"]) && 
