@@ -6,7 +6,7 @@
 $mysqli = require __DIR__ . "/database.php";
 
 $sessionID = $_GET['sessionID'];
-
+//Validates the session ID is valid and is not an old session.
 $sqlSessionInfo = "SELECT * FROM userSessions 
                 WHERE sessionHash = '{$sessionID}' 
                 AND timeOfSession >= DATE_SUB(NOW(), INTERVAL 1 DAY)";
