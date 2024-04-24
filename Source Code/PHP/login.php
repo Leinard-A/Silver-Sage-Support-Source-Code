@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 ?>
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -129,4 +129,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <p>&copy; 2024 Silver Sage Support</p>
     </footer>
 </body>
-</html>  -->
+</html> 
