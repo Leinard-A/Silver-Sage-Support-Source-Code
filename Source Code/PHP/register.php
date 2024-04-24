@@ -193,13 +193,19 @@ if ($registrationFail == false){
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                     <?php if ($emailExists): ?>
+                        <div>
                         <label>Email already in use</label>
+                        </div>
                     <?php endif; ?>
                     <?php if (empty($_POST["email"])):?>
+                        <div>
                         <label>Missing Email</label>
+                        </div>
                     <?php endif; ?>
                     <?php if ($invalidEmail):?>
+                        <div>
                         <label>Please enter vaild email.</label>
+                        </div>
                     <?php endif; ?>
                 </div>
                 <div class="form-row">
