@@ -1,0 +1,7 @@
+Primary contribution to:
+
+database.php => Joe, Leinard
+login.php => Joe, Leinard
+logout.php => Joe
+register.php => Joe, Leinard
+userPage.php => Leinard

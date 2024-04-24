@@ -1,0 +1,9 @@
+Primary contribution to:
+
+about.html => Theon, Andrea
+contact.html => Theon, Andrea
+index.html => Theon, Andrea
+login.html => Theon, Joe
+register.html => Theon, Joe
+userPage.html => Theon, Leinard
+virtual_chat_bot.html => Theon
