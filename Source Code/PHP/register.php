@@ -148,11 +148,11 @@ if ($registrationFail == false){
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 10vh; /* Change height to min-height */
+            min-height: 145vh; /* Change height to min-height */
         }
 
         .content {
-            padding: 50px 20px 20px; /* Increase top padding to raise the content higher */
+            padding: 25px 20px 20px; /* Increase top padding to raise the content higher */
         }
 
         .form-row {
