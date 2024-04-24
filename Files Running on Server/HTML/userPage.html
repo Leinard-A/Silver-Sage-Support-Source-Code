@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+</head>
+<body>
+    <h1>User Information</h1>
+
+    <table border="10"  >
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>NHS Number</th>
+            <th>Insurance Provider</th>
+            <th>Insurance Number</th>
+        </tr>
+        <tr>
+            <td id = 'fullname'></td>
+            <td id = 'email'></td>
+            <td id = 'username'></td>
+            <td id = 'dateOfBirth'></td>
+            <td id = 'gender'></td>
+            <td id = 'nhsNumber'></td>
+            <td id = 'insuranceProvider'></td>
+            <td id = 'insuranceNumber'></td>
+        </tr>
+    </table>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionID = urlParams.get('sessionID');
+        const fullname = document.getElementById('fullname');
+        const email = document.getElementById('email');
+        const username = document.getElementById('username');
+        const dateOfBirth = document.getElementById('dateOfBirth');
+        const gender = document.getElementById('gender');
+        const nhsNumber = document.getElementById('nhsNumber');
+        const insuranceProvider = document.getElementById('insuranceProvider');
+        const insuranceNumber = document.getElementById('insuranceNumber');
+        console.log(sessionID);
+        fetch('https://mi-linux.wlv.ac.uk/~2201213/Collab/userPage.php?sessionID='+sessionID)
+        .then(response => response.json())
+        .then(response => {
+            if (response.sessionID == 'False'){
+                window.location.replace('login.html');
+            }
+            else{
+                fullname.innerHTML = response.fullname;
+                email.innerHTML = response.email;
+                username.innerHTML = response.username;
+                dateOfBirth.innerHTML = response.dateofBirth;
+                gender.innerHTML = response.gender;
+                nhsNumber.innerHTML = response.nhsNumber;
+                if (response.insuranceNumber == null && response.insuranceProvider == null){
+                    insuranceProvider.innerHTML = "No Insurance";
+                    insuranceNumber.innerHTML = "No Insurance";
+                }
+                else{
+                    insuranceProvider.innerHTML = response.insuranceProvider;
+                    insuranceNumber.innerHTML = response.insuranceNumber;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
