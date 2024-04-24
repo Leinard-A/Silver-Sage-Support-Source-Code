@@ -6,7 +6,7 @@ $invalid_password = false;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     $mysqli = require __DIR__ . "/database.php";
-    //Retrieve the data from the database
+    //Retrieve the data from the database to validate user
     $sqlRequest_Password = "SELECT password FROM users
                             WHERE email = '{$_POST['email']}'
     ";
@@ -34,13 +34,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $sqlCheckSession = "SELECT * FROM userSessions 
                             WHERE timeOfSession >= DATE_SUB(NOW(), INTERVAL 1 DAY)
                             AND email = '{$_POST['email']}'";
-        $sqlSession = mysqli_query( $mysqli, $sqlCheckSession);
+        $sqlSession = mysqli_query($mysqli, $sqlCheckSession);
         if (mysqli_num_fields($sqlSession) > 0){
             $result = mysqli_fetch_assoc($sqlSession);
             $sessionHash = $result["sessionHash"];
             mysqli_free_result($sqlSession);
         }
         else{
+            //Get rid of the old session entry
+            $sqlCheckSession = "SELECT * FROM userSessions 
+                                WHERE timeOfSession <= DATE_SUB(NOW(), INTERVAL 1 DAY)
+                                AND email = '{$_POST['email']}'";
+            $sqlSession = mysqli_query($mysqli, $sqlCheckSession);
+            if (mysqli_num_rows($sqlSession) > 0){
+                $removePrevSession = "DELETE FROM userSession
+                                    WHERE timeOfSession <= DATE_SUB(NOW(), INTERVAL 1 DAY) 
+                                     AND email = '{$_POST['email']}'";
+                mysqli_query($mysqli, $removePrevSession);   
+            }
+            mysqli_free_result($sqlSession);
+            //Create a new session entry
             $timeOfSession = date('Y-m-d H:i:s');
             $sessionValue = ($timeOfSession.$_POST['email']);
             $sessionHash = hash('sha256',$sessionValue);  
