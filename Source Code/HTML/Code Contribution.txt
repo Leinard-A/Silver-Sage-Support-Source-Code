@@ -1,9 +1,9 @@
 Primary contribution to:
 
-about.html => Theon, Andrea
-contact.html => Theon, Andrea
-index.html => Theon, Andrea
-login.html => Theon, Joe
-register.html => Theon, Joe
-userPage.html => Theon, Leinard
-virtual_chat_bot.html => Theon
+about.html => Theon Harrison, Andrea Ndlovu
+contact.html => Theon Harrison, Andrea Ndlovu
+index.html => Theon Harrison, Andrea Ndlovu
+login.html => Theon Harrison, Joe Zielinski
+register.html => Theon Harrison, Joe Zielinski
+userPage.html => Theon Harrison, Leinard Alejandrino   
+virtual_chat_bot.html => Theon Harrison

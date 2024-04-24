@@ -1,7 +1,7 @@
 Primary contribution to:
 
-database.php => Joe, Leinard
-login.php => Joe, Leinard
-logout.php => Joe
-register.php => Joe, Leinard
-userPage.php => Leinard
+database.php => Joe Zielinkski, Leinard Alejandrino
+login.php => Joe Zielinkski, Leinard Alejandrino
+logout.php => Joe Zielinkski
+register.php => Joe Zielinkski, Leinard Alejandrino
+userPage.php => Leinard Alejandrino
