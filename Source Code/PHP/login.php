@@ -25,44 +25,45 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $hashedPassword = $arrayPassword["password"];
         if (!password_verify($_POST['password'],$hashedPassword)){
             $invalid_password = true;
+            print("InValidated Password");
         }
         mysqli_free_result($resultPassword);
     }
     //If all is fine then redirect the user to the user profile page.
-    if (mysqli_num_fields($resultEmail) > 0 && 
+    print("Create sessionID");
+    if (mysqli_fetch_assoc($resultEmail) != null && 
         password_verify($_POST['password'],$hashedPassword)) {
-        $sqlCheckSession = "SELECT * FROM userSessions 
+        $sqlCheckSession = "SELECT sessionHash FROM userSessions 
                             WHERE timeOfSession >= DATE_SUB(NOW(), INTERVAL 1 DAY)
                             AND email = '{$_POST['email']}'";
         $sqlSession = mysqli_query($mysqli, $sqlCheckSession);
-        if (mysqli_num_fields($sqlSession) > 0){
-            $result = mysqli_fetch_assoc($sqlSession);
+        $result = mysqli_fetch_assoc($sqlSession);
+        if ($result != null){
             $sessionHash = $result["sessionHash"];
-            mysqli_free_result($sqlSession);
+
         }
         else{
-            //Get rid of the old session entry
-            $sqlCheckSession = "SELECT * FROM userSessions 
-                                WHERE timeOfSession <= DATE_SUB(NOW(), INTERVAL 1 DAY)
-                                AND email = '{$_POST['email']}'";
-            $sqlSession = mysqli_query($mysqli, $sqlCheckSession);
-            if (mysqli_num_rows($sqlSession) > 0){
+            print("Create a new session ID");
+            ///Get rid of the old session entry
+            if (mysqli_fetch_assoc($sqlSession) != null){
+                print("Remove old session ID from database)");
                 $removePrevSession = "DELETE FROM userSession
                                     WHERE timeOfSession <= DATE_SUB(NOW(), INTERVAL 1 DAY) 
                                      AND email = '{$_POST['email']}'";
-                mysqli_query($mysqli, $removePrevSession);   
+                mysqli_query($mysqli, $removePrevSession);  
             }
             mysqli_free_result($sqlSession);
             //Create a new session entry
             $timeOfSession = date('Y-m-d H:i:s');
             $sessionValue = ($timeOfSession.$_POST['email']);
             $sessionHash = hash('sha256',$sessionValue);  
+
             $sqlStmt = "INSERT INTO userSessions(email, sessionHash, timeOfSession)
                         VALUES ('{$_POST['email']}', '{$sessionHash}', '{$timeOfSession}')
             ";
             $resultStmt = mysqli_query($mysqli, $sqlStmt);
         }
-        header("Location: userPage.html?sessionID={$sessionHash}");  
+       header("Location: userPage.html?sessionID={$sessionHash}");  
     } 
 
     
