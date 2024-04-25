@@ -85,11 +85,11 @@ hr {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 40px;
         }
         .team-member {
             width: 300px;
-            margin: 20px;
+            margin: 30px;
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -101,22 +101,23 @@ hr {
             border: 3px solid #000000; /* Adding border to the images */
         }
         .team-member h2 {
-            margin-top: 10px;
+            margin-top: 20px;
             font-size: 1.2em;
         }
         .team-member p {
-            margin-top: 5px;
+            margin-top: 10px;
             font-size: 0.9em;
         }
         .team-member button {
-            margin-top: 10px;
+            margin-top: 20px;
             padding: 8px 15px;
             background-color: #FF5733;
             color: #fff;
             border: none;
             border-radius: 3px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: 
+            background-color 0.3s ease;
         }
         .team-member button:hover {
             background-color: #FF5733 ;
@@ -134,7 +135,8 @@ hr {
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
-    min-height: 10000vh;
+    margin: 0;
+    padding: 0;
 }
 
 /* Container styles */
