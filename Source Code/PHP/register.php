@@ -2,7 +2,7 @@
 $errors = array();
 
 //Validation of parameters
-if (empty($_POST["fullName"]) OR empty($_POST["email"]) OR empty($_POST["password"]) OR empty($_POST["username"]) or empty ($_POST["nhsNumber"])) {
+if (empty($_POST["fullname"]) OR empty($_POST["email"]) OR empty($_POST["password"]) OR empty($_POST["username"]) or empty ($_POST["nhsNumber"])) {
     array_push($errors,"All fields are required");
     $allFields = false;
    }
@@ -46,7 +46,7 @@ if(isset($_POST['gender']) ){
 }
 
 //Hashing Password
-$password_hash = password_hash($_POST ["password"],PASSWORD_DEFAULT);
+$password_hash = password_hash($_POST["password"],PASSWORD_DEFAULT);
 
 $mysqli = require __DIR__. "/database.php";
 //Checks if password already exists in database
