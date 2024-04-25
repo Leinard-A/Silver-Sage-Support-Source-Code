@@ -56,9 +56,9 @@ $sqlStmt = "SELECT * FROM users
 $result = mysqli_query($mysqli,$sqlStmt);
 if (mysqli_num_fields($result) > 0) {
     array_push($errors,"Password already exists!");
-    $passwordExists = true;
-    mysqli_free_result($result);
+    $passwordExists = true;;
 }
+mysqli_free_result($result);
 //Checks if the email is already in use
 $sqlStmt = "SELECT * FROM users
             WHERE email = '{$_POST['email']}'";
@@ -68,8 +68,8 @@ $result =  mysqli_query($mysqli,$sqlStmt);
 if (mysqli_num_fields($result) > 0 ){
     array_push($errors, "Emails already in use");
     $emailExists = true;
-    mysqli_free_result($result);
 }
+mysqli_free_result($result);
 //Checks if the username is already in use
 $sqlStmt = "SELECT * FROM users
             WHERE username = '{$_POST['username']}'";
@@ -79,8 +79,8 @@ $result = mysqli_query($mysqli,$sqlStmt);
 if (mysqli_num_fields($result) > 0 ){
     array_push($errors, "Username already in use");
     $usernameExists = true;
-    mysqli_free_result($result);
 }
+mysqli_free_result($result);
 
 
 
