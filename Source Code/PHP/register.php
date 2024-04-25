@@ -50,7 +50,7 @@ $password_hash = password_hash($_POST["password"],PASSWORD_DEFAULT);
 
 $mysqli = require __DIR__. "/database.php";
 //Checks if password already exists in database
-$sqlStmt = "SELECT * FROM users 
+$sqlStmt = "SELECT password FROM users 
             WHERE password = '{$password_hash}' ";
 
 $result = mysqli_query($mysqli,$sqlStmt);
@@ -60,7 +60,7 @@ if (mysqli_num_fields($result) > 0) {
 }
 mysqli_free_result($result);
 //Checks if the email is already in use
-$sqlStmt = "SELECT * FROM users
+$sqlStmt = "SELECT email FROM users
             WHERE email = '{$_POST['email']}'";
 
 $result =  mysqli_query($mysqli,$sqlStmt);
@@ -71,7 +71,7 @@ if (mysqli_num_fields($result) > 0 ){
 }
 mysqli_free_result($result);
 //Checks if the username is already in use
-$sqlStmt = "SELECT * FROM users
+$sqlStmt = "SELECT username FROM users
             WHERE username = '{$_POST['username']}'";
 
 $result = mysqli_query($mysqli,$sqlStmt);
