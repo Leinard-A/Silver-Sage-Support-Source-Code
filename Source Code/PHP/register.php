@@ -19,16 +19,16 @@ if (!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)){
     array_push($errors, "Please enter vaild email.");
     $invalidEmail = true;
 }
-if (strlen($_POST["password"])<8)  {
+if (iconv_strlen($_POST["password"])<8)  {
     array_push($errors, "Password requires atleast 8 characters one of which must be a number.");
     $passwordLength = false;
 }
-if(!preg_match("/^[a-zA-Z]+$/",$_POST["password"])){
+if(!preg_match("/[A-Za-z]/",$_POST["password"])){
     array_push($errors, "Password must contain atleast 1 letter");
     $containLetter = false;
 
 }
-if(!preg_match("/^[0-9]+$/",$_POST["password"])){
+if(!preg_match("/[0-9]/",$_POST["password"])){
     array_push($errors, "must containt 1 number");
     $containsNumber = false;
 }
@@ -50,43 +50,39 @@ $password_hash = password_hash($_POST["password"],PASSWORD_DEFAULT);
 
 $mysqli = require __DIR__. "/database.php";
 //Checks if password already exists in database
-$sqlStmt = "SELECT password FROM users 
+$sqlStmt = "SELECT * FROM users 
             WHERE password = '{$password_hash}' ";
 
 $result = mysqli_query($mysqli,$sqlStmt);
-if (mysqli_num_fields($result) > 0) {
+if (mysqli_fetch_assoc($result) != null) {
     array_push($errors,"Password already exists!");
-    $passwordExists = true;;
+    $passwordExists = true;
+
 }
-mysqli_free_result($result);
 //Checks if the email is already in use
-$sqlStmt = "SELECT email FROM users
+$sqlStmt = "SELECT * FROM users
             WHERE email = '{$_POST['email']}'";
 
 $result =  mysqli_query($mysqli,$sqlStmt);
-
-if (mysqli_num_fields($result) > 0 ){
+if (mysqli_fetch_assoc($result) != null ){
     array_push($errors, "Emails already in use");
     $emailExists = true;
 }
-mysqli_free_result($result);
 //Checks if the username is already in use
-$sqlStmt = "SELECT username FROM users
+$sqlStmt = "SELECT * FROM users
             WHERE username = '{$_POST['username']}'";
 
 $result = mysqli_query($mysqli,$sqlStmt);
-
-if (mysqli_num_fields($result) > 0 ){
+if (mysqli_fetch_assoc($result) != null ){
     array_push($errors, "Username already in use");
     $usernameExists = true;
 }
-mysqli_free_result($result);
-
 
 
 //Inputs data into the database. 
 if (count($errors)>0){
     $registrationFail = true;
+    mysqli_free_result($result);
     mysqli_close($mysqli);
 }
 else if (!empty($_POST["insuranceProvider"]) && 
@@ -193,19 +189,13 @@ if ($registrationFail == false){
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                     <?php if ($emailExists): ?>
-                        <div>
                         <label>Email already in use</label>
-                        </div>
                     <?php endif; ?>
                     <?php if (empty($_POST["email"])):?>
-                        <div>
                         <label>Missing Email</label>
-                        </div>
                     <?php endif; ?>
                     <?php if ($invalidEmail):?>
-                        <div>
                         <label>Please enter vaild email.</label>
-                        </div>
                     <?php endif; ?>
                 </div>
                 <div class="form-row">
