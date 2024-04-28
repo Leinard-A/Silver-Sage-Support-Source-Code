@@ -3,7 +3,7 @@ $mysqli = require __DIR__. "/database.php";
 
 $sessionID = $_GET['sessionID'];
 $sqlEmail ="SELECT email FROM userSessions
-            WHERE sessionID = '$sessionID'";
+            WHERE sessionHash = '{$sessionID}'";
 
 //Get the user email address from session ID 
 $sqlResult = mysqli_query($mysqli, $sqlEmail);
@@ -13,7 +13,7 @@ mysqli_free_result($sqlResult);
 
 //Get messages that are being sent to the email
 $sqlGetMessags ="SELECT * FROM userMessages
-                WHERE recipientEmail = '$userEmail'";
+                WHERE recipientEmail = '{$userEmail}'";
 $sqlMessages = mysqli_query($mysqli, $sqlGetMessags);
 $resultMessages = mysqli_fetch_assoc($sqlMessages);
 
