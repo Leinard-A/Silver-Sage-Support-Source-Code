@@ -5,3 +5,6 @@ login.php => Joe Zielinkski, Leinard Alejandrino
 logout.php => Joe Zielinkski
 register.php => Joe Zielinkski, Leinard Alejandrino
 userPage.php => Leinard Alejandrino
+getStaffEmails.php => Leinard Alejandrino
+sendMessage.php => Leinard Alejandrino
+requestMessage.php => Leinard Alejandrino

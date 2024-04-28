@@ -18,7 +18,7 @@ if (!mysqli_query($mysqli,$mysql)) {
     echo("<h4>SQL error description: " . mysqli_error($mysqli) . "</h4>");
 }
 $returnMessage = array(
-    "Message" => "Sent",
+    "Message" => "Sent"
 );
 print(json_encode($returnMessage));
 mysqli_free_result($sqlResult);

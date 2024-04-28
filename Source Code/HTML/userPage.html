@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Silver Sage Support</title>
@@ -54,11 +54,7 @@
     </style>
   </head>
 
-  <body onload = 'getUserInfo()'>
-    <header>
-      <h1>Silver Sage Support</h1>
-</head>
-<body onload = 'getUserInfo()'>
+  <body onload = 'loadFunction()'>
     <header>
       <h1>Silver Sage Support</h1>
     </header>
@@ -110,9 +106,14 @@
         </table>
       </div>
       <div class="container">
-        <textarea class="textbox" id="message" rows="4" cols="50"></textarea
-        ><br />
-        <button onclick="sendMessage()">Send Message</button>
+        <form class="container3" action="javascript:sendMessage()">
+          <label for="chooseEmployee">Choose which employee you would like to contact:</label>
+          <select id="chooseEmployee" name="chooseEmployee">
+          </select>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" oninput="autoResize(this)" class="textbox" placeholder="Enter your message here please  "></textarea>  
+          <input type="submit" value="Send">
+        </form>
       </div>
     </div>
 
@@ -121,57 +122,97 @@
     </footer>
 
     <script>
-    function getSessionID(){
-        const urlParams = new URLSearchParams(window.location.search);
-        const sessionID = urlParams.get("sessionID");
-        return sessionID 
-    }
-        
-    function getUserInfo() {
-        const sessionID = getSessionID();
-        const fullname = document.getElementById("fullname");
-        const email = document.getElementById("email");
-        const username = document.getElementById("username");
-        const dateOfBirth = document.getElementById("dateOfBirth");
-        const gender = document.getElementById("gender");
-        const nhsNumber = document.getElementById("nhsNumber");
-        const insuranceProvider = document.getElementById("insuranceProvider");
-        const insuranceNumber = document.getElementById("insuranceNumber");
-        const employeeMenu = document.getElementById("employeeMenu");
-        fetch(
-          "https://mi-linux.wlv.ac.uk/~2201213/Collab/userPage.php?sessionID="+sessionID)
-          .then((response) => response.json())
-          .then((response) => {
-            if (response.sessionID == "False") {
-              window.location.replace("login.html");
-            } else {
-              if (response.employee == 1){
-
-              }
-              fullname.innerHTML = response.fullname;
-              email.innerHTML = response.email;
-              username.innerHTML = response.username;
-              dateOfBirth.innerHTML = response.dateofBirth;
-              gender.innerHTML = response.gender;
-              nhsNumber.innerHTML = response.nhsNumber;
-              if (
-                response.insuranceNumber == null &&
-                response.insuranceProvider == null
-              ) {
-                insuranceProvider.innerHTML = "No Insurance";
-                insuranceNumber.innerHTML = "No Insurance";
-              } else {
-                insuranceProvider.innerHTML = response.insuranceProvider;
-                insuranceNumber.innerHTML = response.insuranceNumber;
-              }
-            }
-          });
+      function loadFunction() {
+        getUserInfo();
+        getStaffEmail();
       }
+      function getMessages(){
+
+      }
+      function getStaffEmail(){
+          //Dynamically display the staff emails that users can send messages to.
+          const staffSelection = document.getElementById("chooseEmployee");
+          fetch('https://mi-linux.wlv.ac.uk/~2201213/Collab/getStaffEmails.php')
+          .then(response => response.json())
+          .then(response => {
+              console.log(response)
+              console.log(response[1])
+             for (let i = 0; i < response.length; i++) {
+                 staffSelection.innerHTML += "<option value='" + response[i] + "'>" + response[i] + "</option>";
+             }
+          })
+ 
+      }
+      function getSessionID(){
+          const urlParams = new URLSearchParams(window.location.search);
+          const sessionID = urlParams.get("sessionID");
+          return sessionID 
+      }   
+      function getUserInfo() {
+          const sessionID = getSessionID();
+          const fullname = document.getElementById("fullname");
+          const email = document.getElementById("email");
+          const username = document.getElementById("username");
+          const dateOfBirth = document.getElementById("dateOfBirth");
+          const gender = document.getElementById("gender");
+          const nhsNumber = document.getElementById("nhsNumber");
+          const insuranceProvider = document.getElementById("insuranceProvider");
+          const insuranceNumber = document.getElementById("insuranceNumber");
+          const employeeMenu = document.getElementById("employeeMenu");
+          fetch(
+            "https://mi-linux.wlv.ac.uk/~2201213/Collab/getUserInfo.php?sessionID="+sessionID)
+            .then((response) => response.json())
+            .then((response) => {
+              if (response.sessionID == "False") {
+                window.location.replace("login.html");
+              } else {
+                if (response.employee == 1){
+
+                }
+                fullname.innerHTML = response.fullname;
+                email.innerHTML = response.email;
+                username.innerHTML = response.username;
+                dateOfBirth.innerHTML = response.dateofBirth;
+                gender.innerHTML = response.gender;
+                nhsNumber.innerHTML = response.nhsNumber;
+                if (
+                  response.insuranceNumber == null &&
+                  response.insuranceProvider == null
+                ) {
+                  insuranceProvider.innerHTML = "No Insurance";
+                  insuranceNumber.innerHTML = "No Insurance";
+                } else {
+                  insuranceProvider.innerHTML = response.insuranceProvider;
+                  insuranceNumber.innerHTML = response.insuranceNumber;
+                }
+              }
+            });
+        }
       function sendMessage() {
-        const sessionID = getSessionID();
-        var message = document.getElementById("message").value;
-        localStorage.setItem("message", message);
-        window.open("Outreach.html?sessionID="+sessionID, "_blank");
+          const sessionID = getSessionID();
+          const message = document.getElementById("message").value;
+          const employeeSelection = document.getElementById("chooseEmployee");
+          const employeeEmail = employeeSelection.value;
+          fetch(
+            "https://mi-linux.wlv.ac.uk/~2201213/Collab/sendMessage.php?"+
+              "sessionID="+sessionID+ 
+              "&userMessage="+message+
+              "&recipientEmail="+employeeEmail)
+          .then(response => response.json())
+          .then(response => {
+            console.log(response);
+            if (response.MessageSent) {
+              alert("Message sent successfully");
+              window.location.replace("index.html");
+            } else {
+              alert("Message not sent");
+            }
+            window.location.replace("userPage.html?sessionID="+sessionID)
+          })
+      }
+      function autoResize(textbox) {
+        textbox.style.height = 'auto';
+        textbox.style.height = (textbox.scrollHeight) + 'px';
       }
     </script>
   </body>

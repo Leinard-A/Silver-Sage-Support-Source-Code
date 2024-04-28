@@ -14,7 +14,7 @@ $sqlSessionInfo = "SELECT * FROM userSessions
 $sessionInfo = mysqli_query($mysqli, $sqlSessionInfo);
 if (mysqli_num_rows($sessionInfo) == 0) {
         $response  = array(
-                "sessionID" => "False",
+                "sessionID" => "False"
         );
         print(json_encode($response));
 }
