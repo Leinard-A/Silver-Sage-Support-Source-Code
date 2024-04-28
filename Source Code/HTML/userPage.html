@@ -168,9 +168,10 @@
           });
       }
       function sendMessage() {
+        const sessionID = getSessionID();
         var message = document.getElementById("message").value;
         localStorage.setItem("message", message);
-        window.open("Outreach.html", "_blank");
+        window.open("Outreach.html?sessionID="+sessionID, "_blank");
       }
     </script>
   </body>
