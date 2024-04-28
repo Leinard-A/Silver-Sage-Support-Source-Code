@@ -1,106 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Silver Sage Support</title>
+    <link rel="stylesheet" href="styles.css" />
     <style>
-        .container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .header2 {
-            background-color: #ffffff;
-            color: #333; /* Header background color */
-            padding: 20px 0;
-            text-align: center;
-        }
+        .half {
+        flex: 1;
+        text-align: center;
+        padding: 20px;
+        overflow: hidden;
+      }
+      .content {
+        width: 100%;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin: 10px;
+      }
+
+      th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        background-color: #f2f2f2;
+      }
+
+      td {
+        padding: 10px;
+      }
+
+      .container {
+        justify-content: flex-start;
+        width: 600px;
+        margin: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+
+      .container2 {
+        left: 120px;
+        width: 20%;
+        margin: 100px;
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body onload = 'getUserInfo()'>
     <header>
-        <h1>Silver Sage Support</h1>
+      <h1>Silver Sage Support</h1>
+</head>
+<body onload = 'getUserInfo()'>
+    <header>
+      <h1>Silver Sage Support</h1>
     </header>
+
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html">Logout</a>
-        <a href="register.html">Register</a>
-        <a href="virtual_chat_bot.html">Virtual Chat Bot</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Logout</a>
     </nav>
-    <header class = "header2">
-        <h1>User Information</h1>
-    </header>
-    <div class="container">
-        <table border="10">
-            <tr>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>Date of Birth</th>
-                <th>Gender</th>
-                <th>NHS Number</th>
-                <th>Insurance Provider</th>
-                <th>Insurance Number</th>
-            </tr>
-            <tr>
-                <td id = 'fullname'></td>
-                <td id = 'email'></td>
-                <td id = 'username'></td>
-                <td id = 'dateOfBirth'></td>
-                <td id = 'gender'></td>
-                <td id = 'nhsNumber'></td>
-                <td id = 'insuranceProvider'></td>
-                <td id = 'insuranceNumber'></td>
-            </tr>
+
+    <h1>Account Information | Send a messagage to an employee</h1>
+
+    <div class = "team">
+      <div class="container">
+        <table class="container2">
+          <tr>
+            <th class="">Full Name</th>
+            <td id="fullname"></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td id="email"></td>
+          </tr>
+          <tr>
+            <th>Username</th>
+            <td id="username"></td>
+          </tr>
+          <tr>
+            <th>Date of Birth</th>
+            <td id="dateOfBirth"></td>
+          </tr>
+          <tr>
+            <th>Gender</th>
+            <td id="gender"></td>
+          </tr>
+          <tr>
+            <th>nhsNumber</th>
+            <td id="nhsNumber"></td>
+          </tr>
+          <tr>
+            <th>insuranceProvider</th>
+            <td id="insuranceProvider"></td>
+          </tr>
+          <tr>
+            <th>insuranceNumber</th>
+            <td id="insuranceNumber"></td>
+          </tr>
         </table>
-    </div>
-    <div class="container">
+      </div>
+      <div class="container">
+        <textarea class="textbox" id="message" rows="4" cols="50"></textarea
+        ><br />
+        <button onclick="sendMessage()">Send Message</button>
+      </div>
     </div>
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const sessionID = urlParams.get('sessionID');
-        const fullname = document.getElementById('fullname');
-        const email = document.getElementById('email');
-        const username = document.getElementById('username');
-        const dateOfBirth = document.getElementById('dateOfBirth');
-        const gender = document.getElementById('gender');
-        const nhsNumber = document.getElementById('nhsNumber');
-        const insuranceProvider = document.getElementById('insuranceProvider');
-        const insuranceNumber = document.getElementById('insuranceNumber');
-        console.log(sessionID);
-        fetch('https://mi-linux.wlv.ac.uk/~2201213/Collab/userPage.php?sessionID='+sessionID)
-        .then(response => response.json())
-        .then(response => {
-            if (response.sessionID == 'False'){
-                window.location.replace('login.html');
-            }
-            else{
-                fullname.innerHTML = response.fullname;
-                email.innerHTML = response.email;
-                username.innerHTML = response.username;
-                dateOfBirth.innerHTML = response.dateofBirth;
-                gender.innerHTML = response.gender;
-                nhsNumber.innerHTML = response.nhsNumber;
-                if (response.insuranceNumber == null && response.insuranceProvider == null){
-                    insuranceProvider.innerHTML = "No Insurance";
-                    insuranceNumber.innerHTML = "No Insurance";
-                }
-                else{
-                    insuranceProvider.innerHTML = response.insuranceProvider;
-                    insuranceNumber.innerHTML = response.insuranceNumber;
-                }
-            }
-        })
-    </script>    
     <footer>
-        <p>&copy; 2024 Silver Sage Support</p>
+      <p>&copy; 2024 Silver Sage Support</p>
     </footer>
-</body>
+
+    <script>
+    function getSessionID(){
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionID = urlParams.get("sessionID");
+        return sessionID 
+    }
+        
+    function getUserInfo() {
+        const sessionID = getSessionID();
+        const fullname = document.getElementById("fullname");
+        const email = document.getElementById("email");
+        const username = document.getElementById("username");
+        const dateOfBirth = document.getElementById("dateOfBirth");
+        const gender = document.getElementById("gender");
+        const nhsNumber = document.getElementById("nhsNumber");
+        const insuranceProvider = document.getElementById("insuranceProvider");
+        const insuranceNumber = document.getElementById("insuranceNumber");
+        const employeeMenu = document.getElementById("employeeMenu");
+        fetch(
+          "https://mi-linux.wlv.ac.uk/~2201213/Collab/userPage.php?sessionID="+sessionID)
+          .then((response) => response.json())
+          .then((response) => {
+            if (response.sessionID == "False") {
+              window.location.replace("login.html");
+            } else {
+              if (response.employee == 1){
+
+              }
+              fullname.innerHTML = response.fullname;
+              email.innerHTML = response.email;
+              username.innerHTML = response.username;
+              dateOfBirth.innerHTML = response.dateofBirth;
+              gender.innerHTML = response.gender;
+              nhsNumber.innerHTML = response.nhsNumber;
+              if (
+                response.insuranceNumber == null &&
+                response.insuranceProvider == null
+              ) {
+                insuranceProvider.innerHTML = "No Insurance";
+                insuranceNumber.innerHTML = "No Insurance";
+              } else {
+                insuranceProvider.innerHTML = response.insuranceProvider;
+                insuranceNumber.innerHTML = response.insuranceNumber;
+              }
+            }
+          });
+      }
+      function sendMessage() {
+        var message = document.getElementById("message").value;
+        localStorage.setItem("message", message);
+        window.open("Outreach.html", "_blank");
+      }
+    </script>
+  </body>
 </html>
