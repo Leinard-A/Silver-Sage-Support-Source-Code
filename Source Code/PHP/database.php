@@ -2,9 +2,9 @@
 
 
 $host="localhost";
-$dbname= "db2201213";
-$username = "2201213";
-$password = "4jrat6";
+$dbname= "";
+$username = "";
+$password = "";
 
 $mysqli = mysqli_connect($host,$username,$password,$dbname);
 
