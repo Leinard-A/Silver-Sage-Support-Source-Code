@@ -15,3 +15,6 @@ then when you log into your userpage request a text chat with a medical professi
 This is not an official product, but a repository of code that was developed for a University Module. 
 This is the work of multple individuals and not all of it was written by the owner of this repository.
 Credits for those who contributed to each file are credited within the txt file in each folder. 
+
+**The website is also hosted on the University of Wolverhampton server**
+**Access the website at your own risk**
