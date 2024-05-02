@@ -1,9 +1,9 @@
 Primary contribution to:
 
-database.php => Joe Zielinkski, Leinard Alejandrino
-login.php => Joe Zielinkski, Leinard Alejandrino
-logout.php => Joe Zielinkski
-register.php => Joe Zielinkski, Leinard Alejandrino
+database.php => Jozef Zielinkski, Leinard Alejandrino
+login.php => Jozef Zielinkski, Leinard Alejandrino
+logout.php => Jozef Zielinkski
+register.php => Jozef Zielinkski, Leinard Alejandrino
 userPage.php => Leinard Alejandrino
 getStaffEmails.php => Leinard Alejandrino
 sendMessage.php => Leinard Alejandrino

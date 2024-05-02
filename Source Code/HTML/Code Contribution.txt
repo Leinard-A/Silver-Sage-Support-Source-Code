@@ -3,8 +3,8 @@ Primary contribution to:
 about.html => Theon Harrison, Andrea Ndlovu
 contact.html => Theon Harrison, Andrea Ndlovu
 index.html => Theon Harrison, Andrea Ndlovu
-login.html => Theon Harrison, Joe Zielinski
-register.html => Theon Harrison, Joe Zielinski
+login.html => Theon Harrison, Jozef Zielinski
+register.html => Theon Harrison, Jozef Zielinski
 userPage.html => Theon Harrison, Leinard Alejandrino   
 virtual_chat_bot.html => Theon Harrison
 Outreach.html => Theon Harrison
