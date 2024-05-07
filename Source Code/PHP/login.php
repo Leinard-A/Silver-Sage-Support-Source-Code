@@ -105,7 +105,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <a href="contact.html">Contact</a>
             <a href="login.html">Login</a>
             <a href="register.html">Register</a>
-            <a href="virtual_chat_bot.html">Virtual Chat Bot</a>
     </nav>
 
     <div class="container2">
