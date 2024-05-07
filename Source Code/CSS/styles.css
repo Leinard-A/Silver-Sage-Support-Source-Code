@@ -1,146 +1,144 @@
-        /* Additional Styles */
-		.container2 {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				min-height: 100vh; /* Adjust as needed */
-		}
-
-		.content {
-				width: 80%; /* Adjust width of content area */
-				max-width: 600px; /* Limit maximum width */
-				padding: 20px;
-				background-color: #fff; /* Form background color */
-				border-radius: 10px;
-				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
-		}
-
-
-/* CSS Styles */
-body {
-	font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f2f2f2; /* Set background color */
-}
-header {
-    background-color: #333; /* Header background color */
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
-nav {
-    background-color: #555; /* Navigation background color */
-    padding: 10px 0;
-    text-align: center;
- }
- nav a {
-    color: #ccc; /* Navigation text color */
-    text-decoration: none;
-    padding: 10px 20px;
-}
-nav a:hover {
-    color: #fff; /* Change text color on hover */
-}
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-.half {
-    flex: 1;
-    text-align: center;
-    padding: 20px;
-    overflow: hidden;
-}
-.image-container {
-    position: relative;
-    height: 100%;
-}
-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-}
-footer {
-    background-color: #333; /* Footer background color */
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-hr {
-    width: 50%;
-    margin: auto;
-    border: 0;
-    border-top: 1px solid #ddd; /* Line color */
-}
-
-
-/* About us */
-        /* Additional CSS styles for enhanced layout */
-        /* Style for team members */
-        .team {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-        .team-member {
-            width: 300px;
-            margin: 30px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .team-member img {
-            width: 100%;
-            border-radius: 50%;
-            border: 3px solid #000000; /* Adding border to the images */
-        }
-        .team-member h2 {
-            margin-top: 20px;
-            font-size: 1.2em;
-        }
-        .team-member p {
-            margin-top: 10px;
-            font-size: 0.9em;
-        }
-        .team-member button {
-            margin-top: 20px;
-            padding: 8px 15px;
-            background-color: #FF5733;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: 
-            background-color 0.3s ease;
-        }
-        .team-member button:hover {
-            background-color: #FF5733 ;
-        }
-		
-/* contact us */
-/* Reset default margin and padding */
+/*Global*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styles */
+.content {
+	width: 80%;
+	max-width: 600px;
+	padding: 20px;
+    background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav {
+    background-color: #555;
+    padding: 10px 0;
+    text-align: center;
+ }
+
+ nav a {
+    color: #ccc;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: serif;
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
 }
 
-/* Container styles */
-.container3 {
+/*Home*/
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+hr {
+    width: 50%;
+    margin: auto;
+    border: 0;
+    border-top: 2px solid #000000;
+}
+
+.homeText {
+    font-family: serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.half {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border: 5px solid #000000;
+}
+
+/*About us*/
+.team {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.team-member {
+    width: 300px;
+    margin: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+        
+.team-member img {
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid #000000;
+}
+
+.team-member h2 {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.team-member p {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.team-member button {
+    margin-top: 20px;
+    padding: 8px 15px;
+    background-color: #189d40;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 
+    background-color 0.3s ease;
+}
+
+.team-member button:hover {
+    background-color: #4ad40e ;
+        }
+		
+/*contact us*/
+.contactUs {
     max-width: 600px;
     margin: 50px auto;
     padding: 30px;
@@ -149,25 +147,31 @@ body {
     border-radius: 8px;
 }
 
-/* Form styles */
-form {
-    display: grid;
-    grid-gap: 20px;
-}	
+/*login*/
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-form2 {
-    display: grid;
-    grid-gap: 20px;
-}	
-
-label {
-    color: #666666;
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
     font-size: 16px;
 }
 
-label2 {
-    color: #666666;
-    font-size: 16px;
+/*register*/
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 130vh;
+    margin: 40px;
 }
 
 input[type="text"],
@@ -184,9 +188,43 @@ textarea {
     resize: vertical;
 }
 
-/* Submit button styles */
+/*userpage*/
+.accountBox {
+    justify-content: flex-start;
+    width: 600px;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+.table2 {
+    left: 180px;
+    width: 20%;
+    margin: 80px;
+  }
+
+.message {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+form {
+    display: grid;
+    grid-gap: 20px;
+}		
+
+label {
+    color: #666666;
+    font-size: 16px;
+}
+
 input[type="submit"] {
-    background-color: #007bff;
+    background-color: #189d40;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -197,13 +235,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .container {
-        margin: 30px auto;
-        padding: 20px;
-    }
+    background-color:#4ad40e;
 }
