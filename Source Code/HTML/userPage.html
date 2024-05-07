@@ -6,20 +6,6 @@
     <title>Silver Sage Support</title>
     <link rel="stylesheet" href="styles.css" />
     <style>
-        .half {
-        flex: 1;
-        text-align: center;
-        padding: 20px;
-        overflow: hidden;
-      }
-      .content {
-        width: 100%;
-        padding: 40px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-
       h1 {
         text-align: center;
         margin: 10px;
@@ -34,22 +20,6 @@
 
       td {
         padding: 10px;
-      }
-
-      .container {
-        justify-content: flex-start;
-        width: 600px;
-        margin: 20px;
-        padding: 15px;
-        border: 1px solid #ddd;
-        background-color: #fff;
-        border-radius: 5px;
-      }
-
-      .container2 {
-        left: 120px;
-        width: 20%;
-        margin: 100px;
       }
     </style>
   </head>
@@ -69,8 +39,8 @@
     <h1>Account Information | Send a messagage to an employee</h1>
 
     <div class = "team">
-      <div class="container">
-        <table class="container2">
+      <div class="accountBox">
+        <table class="table2">
           <tr>
             <th class="">Full Name</th>
             <td id="fullname"></td>
@@ -105,8 +75,8 @@
           </tr>
         </table>
       </div>
-      <div class="container">
-        <form class="container3" action="javascript:sendMessage()">
+      <div class="accountBox">
+        <form class="message" action="javascript:sendMessage()">
           <label for="chooseEmployee">Choose which employee you would like to contact:</label>
           <select id="chooseEmployee" name="chooseEmployee">
           </select>

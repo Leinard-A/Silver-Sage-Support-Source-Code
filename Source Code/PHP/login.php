@@ -81,18 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silver Sage Support - Login</title>
     <link rel="stylesheet" href="styles.css">
-	    <style>
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -107,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <a href="register.html">Register</a>
     </nav>
 
-    <div class="container2">
+    <div class="login">
         <div class="content">
             <h2>Login</h2>
             <?php if ($is_invalid): ?>  
