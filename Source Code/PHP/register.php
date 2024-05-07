@@ -140,23 +140,6 @@ if ($registrationFail == false){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silver Sage Support - Register</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Additional Styles */
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 145vh; /* Change height to min-height */
-        }
-
-        .content {
-            padding: 25px 20px 20px; /* Increase top padding to raise the content higher */
-        }
-
-        .form-row {
-            margin-bottom: 20px; /* Reduce margin between form rows */
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -171,7 +154,7 @@ if ($registrationFail == false){
         <a href="register.html">Register</a>
     </nav>
 
-    <div class="container">
+    <div class="register">
         <div class="content">
             <h2>Register</h2>
             <?php if (!$allFields):?>
